@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 
 type Tab = "overview" | "ai" | "code" | "osint" | "cyber" | "terminal" | "network" | "password" | "ctf" | "mission";
 const nav: { group: string; items: { id: Tab; icon: string; name: string; badge?: string }[] }[] = [
@@ -45,7 +45,7 @@ function Overview({ go }: { go: (tab: Tab) => void }) {
 function AiDesk() {
   const [messages, setMessages] = useState<{ role: string; text: string }[]>([{ role: "assistant", text: "Welcome to MYTHOS AI. This is a local demo assistant. A live AI model is not connected yet." }]);
   const [prompt, setPrompt] = useState("");
-  function send(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); const value = prompt.trim(); if (!value) return; setMessages(old => [...old, { role: "user", text: value }, { role: "assistant", text: "Demo response: define your goal, learn the relevant concepts, and test only in an environment you own or are authorized to assess. Connect a server-side AI API route for real model responses." }]); setPrompt(""); }
+  function send(e: FormEvent<HTMLFormElement>) { e.preventDefault(); const value = prompt.trim(); if (!value) return; setMessages(old => [...old, { role: "user", text: value }, { role: "assistant", text: "Demo response: define your goal, learn the relevant concepts, and test only in an environment you own or are authorized to assess. Connect a server-side AI API route for real model responses." }]); setPrompt(""); }
   return <Panel title="MYTHOS AI Desk" kicker="ASSISTANT / LOCAL DEMO" className="wide"><div className="chat">{messages.map((m, i) => <div className={"message " + m.role} key={i}><b>{m.role === "assistant" ? "MX" : "YOU"}</b><p>{m.text}</p></div>)}</div><form className="composer" onSubmit={send}><input value={prompt} onChange={e => setPrompt(e.target.value)} placeholder="Ask about coding or defensive cybersecurity…" /><button className="primary">Send ↗</button></form><small className="muted">Local demo only. Messages are not sent to an external AI provider.</small></Panel>;
 }
 function CodeStudio() {
@@ -66,7 +66,7 @@ function CyberLab() {
 function Terminal() {
   const [cmd, setCmd] = useState("");
   const [lines, setLines] = useState(["MYTHOS X SIMULATED SHELL v0.1", "This is not a real operating-system terminal. Type help for allowed commands."]);
-  function run(e: React.FormEvent<HTMLFormElement>) { e.preventDefault(); const value = cmd.trim(); if (!value) return; const answers: Record<string, string> = { help: "Commands: help, whoami, date, sysinfo, ls, clear", whoami: "demo-user (simulated identity)", date: new Date().toUTCString(), sysinfo: "Browser simulator | execution disabled | local demo", ls: "README.md  learning-labs/  safe-missions/  examples/" }; if (value === "clear") setLines(["MYTHOS X SIMULATED SHELL v0.1"]); else setLines(old => [...old, "demo@mythos:~$ " + value, answers[value] || "Command not available. Use help to list allowed commands."]); setCmd(""); }
+  function run(e: FormEvent<HTMLFormElement>) { e.preventDefault(); const value = cmd.trim(); if (!value) return; const answers: Record<string, string> = { help: "Commands: help, whoami, date, sysinfo, ls, clear", whoami: "demo-user (simulated identity)", date: new Date().toUTCString(), sysinfo: "Browser simulator | execution disabled | local demo", ls: "README.md  learning-labs/  safe-missions/  examples/" }; if (value === "clear") setLines(["MYTHOS X SIMULATED SHELL v0.1"]); else setLines(old => [...old, "demo@mythos:~$ " + value, answers[value] || "Command not available. Use help to list allowed commands."]); setCmd(""); }
   return <Panel title="Terminal Simulator" kicker="SANDBOXED INTERFACE" className="wide"><div className="terminal">{lines.map((line, i) => <div key={i}>{line}</div>)}<form onSubmit={run}><b>demo@mythos:~$</b><input value={cmd} onChange={e => setCmd(e.target.value)} placeholder="type help" autoComplete="off" /><button>RUN</button></form></div><small className="muted">Only fixed browser-side responses are available. No shell, filesystem, or network command is executed.</small></Panel>;
 }
 function Network() {
