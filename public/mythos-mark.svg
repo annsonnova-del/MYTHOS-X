@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+<title id="title">MYTHOS X emblem</title>
+<defs><linearGradient id="r" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff5967"/><stop offset="1" stop-color="#8c1223"/></linearGradient><linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f1f2f4"/><stop offset="1" stop-color="#414952"/></linearGradient></defs>
+<path d="M64 4 119 34 109 94 64 124 19 94 9 34Z" fill="#0b0d10" stroke="url(#r)" stroke-width="3"/>
+<path d="m28 22 72 84M100 22 28 106" stroke="url(#r)" stroke-width="10" opacity=".9"/>
+<path d="M64 17 98 38 92 84 64 107 36 84 30 38Z" fill="#101317" stroke="#68727c"/>
+<path d="M40 48 53 39 64 43 75 39 88 48 82 80 64 96 46 80Z" fill="url(#s)"/>
+<path d="m43 56 16-5 5 6 5-6 16 5-7 15-14 5-14-5Z" fill="#080a0c"/>
+<path d="m48 59 11-2-2 8h-9Zm32 0-11-2 2 8h9Z" fill="#ff4053"/>
+<path d="M56 79h16l5 8-13 5-13-5Z" fill="#11151a" stroke="#252d35"/>
+<path d="M56 80v7m6-7v9m6-9v9m6-9v7" stroke="#e5e8ec" stroke-width="2.5"/>
+<path d="M20 64h12m64 0h12M64 11v13m0 80v13" stroke="#9dfc70" stroke-width="2"/>
+</svg>
