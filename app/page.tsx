@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState, type FormEvent } from "react";
+import { useMemo, useState, type FormEvent, type ReactNode } from "react";
 
 type Tab = "overview" | "ai" | "code" | "osint" | "cyber" | "terminal" | "network" | "password" | "ctf" | "mission";
 const nav: { group: string; items: { id: Tab; icon: string; name: string; badge?: string }[] }[] = [
@@ -19,7 +19,7 @@ const info: Record<Tab, string> = {
   ctf: "Solve beginner challenges using fictional training data.",
   mission: "Investigate an imaginary incident with invented evidence."
 };
-function Panel({ title, kicker, children, className = "" }: { title: string; kicker: string; children: React.ReactNode; className?: string }) {
+function Panel({ title, kicker, children, className = "" }: { title: string; kicker: string; children: ReactNode; className?: string }) {
   return <section className={"panel " + className}><div className="panel-head"><div><small className="eyebrow">{kicker}</small><h3>{title}</h3></div><i className="panel-status" /></div>{children}</section>;
 }
 function Header({ active }: { active: Tab }) {
